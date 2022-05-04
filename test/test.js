@@ -17,7 +17,7 @@ describe('Contract Test', () => {
 		const contractFactory = await hre.ethers.getContractFactory(CONTRACT_NAME);
 		contract = await contractFactory.deploy();
 		console.log(
-			'✔️ contract deployed!\n⛽ gas price: ${contract.deployTransaction.gasPrice}\n\n'
+			`✔️ contract deployed!\n⛽ gas price: ${contract.deployTransaction.gasPrice}\n\n`
 		);
 	});
 

@@ -1,18 +1,14 @@
 require('@nomiclabs/hardhat-waffle');
 require('@nomiclabs/hardhat-etherscan');
-require('hardhat-gas-reporter');
 require('dotenv').config();
 
 // --- settings ---
-const COMPILER_VERSION = '0.8.9';
-const OPTIMIZATION_RUNS = 500; // leave as 0 to disable optimization
+const COMPILER_VERSION = '0.8.12';
+const OPTIMIZATION_RUNS = 200; // leave as 0 to disable optimization
 const LOCALHOST_CHAIN_ID = 31337; // local blockchain instance chain ID (default is Metamask)
-const REPORT_GAS = false;
-const GAS_PRICE = null; // set custom gas price in gwei, leave null to fetch market price
 // ----------------
 
 const API_KEY_ETHERSCAN = process.env.API_KEY_ETHERSCAN || null;
-const API_KEY_COINMARKETCAP = process.env.API_KEY_COINMARKETCAP || null;
 const PRIVATE_KEY_RINKEBY = process.env.PRIVATE_KEY_RINKEBY || null;
 const PRIVATE_KEY_MAINNET = process.env.PRIVATE_KEY_MAINNET || null;
 const NODE_URL_RINKEBY = process.env.NODE_URL_RINKEBY || null;
@@ -51,18 +47,6 @@ if (API_KEY_ETHERSCAN) {
 		...config,
 		etherscan: {
 			apiKey: API_KEY_ETHERSCAN,
-		},
-	};
-}
-
-if (API_KEY_COINMARKETCAP) {
-	config = {
-		...config,
-		gasReporter: {
-			enabled: REPORT_GAS,
-			coinmarketcap: API_KEY_COINMARKETCAP,
-			currency: 'USD',
-			gasPrice: GAS_PRICE,
 		},
 	};
 }

@@ -1,28 +1,28 @@
-//SPDX-License-Identifier: CC0-1.0
-pragma solidity ^0.8.0;
+//SPDX-License-Identifier: MIT
+pragma solidity 0.8.12;
 
-import "hardhat/console.sol";
+import 'hardhat/console.sol';
 
 contract Greeter {
-    string private greeting = "Hello";
-    address public owner;
+	string private greeting = 'gm';
+	address public owner;
 
-    constructor() {
-        console.log("~* Hello from the constructor! *~");
-        owner = msg.sender;
-    }
+	constructor() {
+		console.log('~* gm from the constructor! *~');
+		owner = msg.sender;
+	}
 
-    function greet() public view returns (string memory) {
-        return greeting;
-    }
+	function greet() public view returns (string memory) {
+		return greeting;
+	}
 
-    function setGreeting(string memory _greeting) public {
-        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-        greeting = _greeting;
-    }
+	function setGreeting(string memory _greeting) public {
+		console.log("changing greeting from '%s' to '%s'", greeting, _greeting);
+		greeting = _greeting;
+	}
 
-    function setOwner(address _owner) public {
-        require(msg.sender == owner, "Unauthorized address");
-        owner = _owner;
-    }
+	function setOwner(address _owner) public {
+		require(msg.sender == owner, 'unauthorized address!');
+		owner = _owner;
+	}
 }
